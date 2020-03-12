@@ -1,0 +1,25 @@
+spring:
+  profiles:
+    active: test
+  username: manager@automation.se
+  password: test123
+browser: chrome
+grid:
+  enabled: false
+  url: http://selenium-hub-setpace:4444/wd/hub
+authCookie:
+  add: true
+
+---
+
+spring:
+  profiles: test
+url: https://web-test.com/
+environment: test
+
+---
+
+spring:
+  profiles: staging
+url: https://web-staging.com/
+environment: staging

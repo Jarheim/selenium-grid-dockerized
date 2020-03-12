@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  selenium-hub-setpace:
+    image: selenium/hub:latest
+    expose:
+      - 4444
+    networks:
+      - selenium-network-setpace
+
+  chrome-setpace:
+    image: selenium/node-chrome-debug:latest
+    depends_on:
+      - selenium-hub-setpace
+    networks:
+      - selenium-network-setpace
+    environment:
+      - HUB_HOST=selenium-hub-setpace
+      - HUB_PORT=4444
+
+networks:
+  selenium-network-setpace:
